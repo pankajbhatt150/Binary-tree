@@ -1,0 +1,106 @@
+/**********************************************************
+
+	Following are the Binary Tree Node class structure and
+	the Node class structure
+
+	template <typename T>
+	class BinaryTreeNode {
+    	public: 
+    	T data;
+    	BinaryTreeNode<T> *left;
+    	BinaryTreeNode<T> *right;
+
+    	BinaryTreeNode(T data) {
+        	this->data = data;
+        	left = NULL;
+        	right = NULL;
+    	}
+	};
+
+	template <typename T>
+	class Node {
+		public:
+    	T data;
+    	Node<T> *next;
+    	Node(T data) {
+        	this->data=data;
+        	this->next=NULL;
+    	}
+	};
+
+***********************************************************/
+
+vector<Node<int>*> constructLinkedListForEachLevel(BinaryTreeNode<int> *root) {
+     vector<Node<int>*> v;
+    
+	if(root==NULL)
+    {
+       v.push_back(NULL) ;
+        
+        return v;
+    }
+        
+    
+    queue<BinaryTreeNode<int> *> q;// creating a queue of binarytreenode
+    
+    q.push(root);
+    q.push(NULL);// for checcking level change
+    
+    Node<int> *head=NULL;
+    Node<int>  *tail =NULL; 
+    
+   
+    while(q.size()!=0)
+    { 
+        BinaryTreeNode<int> *front=q.front();
+        q.pop();
+        
+       if(front==NULL)
+       { tail->next=NULL;
+        
+        if(q.size()==0)
+           break;
+        
+        q.push(NULL);
+        
+        head=NULL;
+        tail=NULL;
+        
+        
+          
+       }
+        
+     else
+     {  
+       Node <int> *n=new Node<int> (front->data);
+       if(head==NULL)
+       {
+           head=tail=n;
+           v.push_back(head);
+       }
+      else
+      {
+          tail->next=n;
+          tail=n;
+      }
+     
+        if(front->left)
+        q.push(front->left);
+        if(front->right)
+         q.push(front->right);
+     }
+    }
+    // Write your code here
+}
+
+
+
+if(root == NUll)
+{
+    v.push_back(null)
+    return v;
+}
+queue<BinaryTreeNode<int> * v;
+v.push(root)
+v.push(NULL) 
+    Node <int>* head==Null;
